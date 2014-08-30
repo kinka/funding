@@ -1,4 +1,6 @@
 .sky table td {width: 15%; -webkit-user-select: none;}
+.sky table td.editing {padding: 0;}
+.sky table td.editing input {width: 90%;}
 .sky table td input {height: 100%; line-height: 16px; height: 32px;}
-.sky table td:nth-child(5) {width: auto;}
+.sky table td:nth-child(6) {width: auto;}
 .btn-add {margin-right: 20px; float: right;}

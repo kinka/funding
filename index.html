@@ -1,7 +1,36 @@
-<html>
+<html ng-app="funding">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/funding.css" rel="stylesheet">
 <title>经费透明</title>
 </head>
 <body>
+<div class="sky" ng-controller="FundingCtrl">
+	<table class="table table-condensed table-hover">
+		<thead><tr>
+		<th>收入</th>
+		<th>支出</th>
+		<th>节余</th>
+		<th>日期</th>
+		<th>经手人</th>
+		<th>备注</th>
+		</tr></thead>
+		<tr ng-repeat="rec in records" ng-mousedown="onRecordClick($event, $index)" ng-mouseup="onRecordClick($event, $index)" ng-class="{success: rec.isNew}">
+<td class="income" ng-dblclick="onEdit($event, $index)">{{rec.income}}</td>
+<td class="outlay" ng-dblclick="onEdit($event, $index)">{{rec.outlay}}</td>
+<td>{{rec.outcome}}</td>
+<td class="date" ng-dblclick="onEdit($event, $index)">{{rec.date}}</td>
+<td class="person" ng-dblclick="onEdit($event, $index)">{{rec.person}}</td>
+<td class="remark" ng-dblclick="onEdit($event, $index)">{{rec.remark}}</td>
+		</tr>
+	</table>
+	<div>
+	<span class="text-danger">注: 长按删除</span>
+	<button class="btn btn-primary btn-add" ng-click="onAdd()">新增记录</button>
+	</div>
+</div>
 </body>
 </html>
+<script src="js/angular.min.js"></script>
+<script src="js/funding.js"></script>

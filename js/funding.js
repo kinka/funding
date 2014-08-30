@@ -11,6 +11,7 @@ angular.module('funding', [])
 	for (var i=0; i<10; i++) {
 		var record = {
 		  income: i*100, outlay: -i*10, outcome: 300,
+		  person: "kinkahuang",
 		  remark: "随便说点", date: dateStr(new Date())
 		};
 		$scope.records.push(record)
@@ -33,6 +34,7 @@ angular.module('funding', [])
 	$scope.onAdd = function() {
 		var record = {
 		  income: 0, outlay: 0, outcome: 0,
+		  person: "",
 		  remark: "随便说点", date: dateStr(new Date()),
 		  isNew: true
 		};
@@ -46,9 +48,8 @@ angular.module('funding', [])
 			input.type = "date"
 		}
 		input.value = target.innerHTML;
-		input.style.width = "90%";
 		target.innerHTML = "";
-		target.style.padding = 0;
+		target.className += " editing";
 		target.appendChild(input);
 		input.focus();
 		input.onblur = input.onkeypress = function(e) {
@@ -58,7 +59,7 @@ angular.module('funding', [])
 			var className = target.className;
 			if (className.indexOf('income') > -1 || className.indexOf('outlay') > -1) value = parseFloat(value);
 			target.innerHTML = value;
-			target.style.padding = "5px";
+			target.className = target.className.replace("editing", "");
 		}
 	}
 })
